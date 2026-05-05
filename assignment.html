@@ -1,0 +1,749 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assignment 8 tabaleu</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="35762b86-756a-80eb-b115-e91dba2323e8" class="page sans"><header><h1 class="page-title" dir="auto">Assignment 8 tabaleu</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="35762b86-756a-8051-a0dd-c2e66308a204" class="image"><a href="image.png"><img style="width:703.977294921875px" src="image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8050-bfa5-cd463ab77b54" class="">Ekdum perfect bhai! Yeh tumhara <strong>1D (Linear) Data Visualization</strong> ka sabse best example hai. Is graph ko <strong>Stacked Histogram</strong> kehte hain.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-800d-b559-e56b551ae389" class="">Aao iska ekdum asaan bhasha mein post-mortem karte hain taaki viva mein tum directly points bata sako:</p></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-8088-98d8-d48a73afa2f9" class=""><strong>Graph ka Basic Structure (Dancha)</strong></h3></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8013-ba55-f42f54dfefe1" class="bulleted-list"><li style="list-style-type:disc"><strong>X-axis (Neeche wali line):</strong> <code>Sepal Length Cm (bin)</code>. Tableau ne automatically Sepal (hari patti) ki lambaai ko chhote-chhote dabbon (bins) mein baant diya hai. Jaise 4.4, 4.6, 4.8 etc. Iska matlab har ek building 0.2 cm ki range dikha rahi hai.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-804c-a072-ed4b593e55f6" class="bulleted-list"><li style="list-style-type:disc"><strong>Y-axis (Khadi line):</strong> <code>Count of Sepal Length</code>. Yeh simply ginti (frequency) bata raha hai ki kisi specific lambaai ke range mein kitne phool hain.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8099-a1dd-ef1f7ac744fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Colors (Marks):</strong> Tumne <code>Species</code> ko Color wale dabbe mein daala hai. Is wajah se ek hi building mein alag-alag color ke blocks ban gaye hain (Blue, Orange, Red), jo teeno alag-alag prajatiyon ko dikha rahe hain.</li></ul></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8018-803a-ee9782fe5df1" class=""><strong>Viva Tip:</strong> Ma&#x27;am puche ki isko 1D kyu bolte hain? Toh batana, <em>&quot;Kyunki hum isme sirf ek hi feature/measurement (Sepal Length) ka distribution dekh rahe hain. Y-axis par koi dusra feature nahi hai, wahan sirf count (ginti) hai.&quot;</em></p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-80e5-8ea0-fd8b2315b1dc" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="35762b86-756a-80ad-ae95-f1494e7e9aae"/></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-80ee-8c8d-db5ee9d0439c" class="image"><a href="image%201.png"><img style="width:768px" src="image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8004-b4b7-f53ff282cfff" class="">Yeh tumhara <strong>2D (Planar) Data Visualization</strong> ka perfect example hai. Isko hum <strong>Scatter Plot with Trend Lines</strong> kehte hain.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-800b-a638-dbbcc638e034" class="">Aao iska &quot;Post-Mortem&quot; karte hain:</p></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-80b7-ad95-c150f50d3d8d" class=""><strong>Graph ka Basic Structure (Dancha)</strong></h3></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80ab-bdd2-c6ccb1c14d7b" class="bulleted-list"><li style="list-style-type:disc"><strong>X-axis (Neeche wali line):</strong> <code>Sepal Length Cm</code>. Yeh phool ke sepal ki lambaai dikha raha hai.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80ea-8110-ec895138bfcf" class="bulleted-list"><li style="list-style-type:disc"><strong>Y-axis (Khadi line):</strong> <code>Sepal Width Cm</code>. Yeh sepal ki chaudaai dikha raha hai.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80a7-8787-c2037b1f2d13" class="bulleted-list"><li style="list-style-type:disc"><strong>Dots (Marks):</strong> Har ek akela dot ek <strong>Id</strong> (ek single phool) ko represent kar raha hai.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80bd-b444-ef839beaf1ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Colors:</strong> Phir se color <code>Species</code> bata raha hai (Blue = Setosa, Orange = Versicolor, Red = Virginica).</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8084-b1e2-e4799e585a27" class="bulleted-list"><li style="list-style-type:disc"><strong>Lines (Trend Lines):</strong> Tableau ne har color ke dots ke beech se guzarne wali ek line bana di hai jo inka &quot;Trend&quot; (bahaav) dikha rahi hai.</li></ul></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-8081-8b6b-cfc520f1311b" class=""><strong>Is graph se hamein kya kahani (Inference) pata chal rahi hai?</strong></h3></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8003-b7ad-c5084f736325" class="">Is 2D graph se hamein Lambaai aur Chaudaai ke beech ka <strong>Rishta (Correlation)</strong> pata chalta hai:</p></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-800a-b08f-e58e472d3f9d" class="numbered-list" start="1"><li><strong>Positive Correlation (Lamba hai toh Chauda bhi hoga):</strong><br/>Agar tum teeno lines (Blue, Orange, Red) ko dekho, toh wo left se right ki taraf upar ja rahi hain. Iska seedha matlab yeh hai ki: <em>Jaise-jaise Sepal ki lambaai badhti hai, generally uski chaudaai bhi badhti hai.</em></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-809e-8151-f4f5e8af4e7e" class="numbered-list" start="2"><li><strong>Setosa (Blue) ki alag pehchaan:</strong><br/>Blue dots ka jhund (cluster) ekdum alag top-left corner mein baitha hai. Yeh graph saaf bata raha hai ki Setosa phoolon ke Sepal <strong>sabse chote hote hain (Lambaai kam), par sabse chaude hote hain (Width zyada)</strong>. Inki trend line ka slope (dhalan) bhi sabse zyada steep (khada) hai.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8016-8c7f-fa16e2745855" class="numbered-list" start="3"><li><strong>Versicolor (Orange) aur Virginica (Red) ki dosti:</strong><br/>Yeh dono clusters bottom-right ki taraf aapas mein thode mix ho gaye hain.<div style="display:contents" dir="auto"><ul id="35762b86-756a-80fc-a2fc-f57b60b02fa5" class="bulleted-list"><li style="list-style-type:disc">Orange wale (Versicolor) medium lambaai aur medium chaudaai wale hain.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80d6-8f48-f9dc0c757a64" class="bulleted-list"><li style="list-style-type:disc">Red wale (Virginica) lambaai mein sabse aage nikal gaye (right side mein sabse aage hain), par unki chaudaai Setosa se kam hi hai.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8068-b067-c26deb5858c2" class="numbered-list" start="4"><li><strong>2D Clustering:</strong><br/>1D wale graph mein teeno species aapas mein mix ho rahi thi (overlapping thi). Par jaise hi tumne 2nd Dimension (Width) add ki, Setosa ekdum alag nikal kar aa gaya! Machine Learning models bilkul aise hi graphs ka use karke phoolon ko pehchante hain.</li></ol></div><div style="display:contents" dir="auto"><p id="35762b86-756a-806a-b37f-f7e554c3106b" class=""><strong>Viva Tip:</strong> Ma&#x27;am puche ki isko 2D Planar kyu bolte hain? Toh batana, <em>&quot;Kyunki hum ek 2D plane (X aur Y axis) par do alag-alag features (Length aur Width) ka ek doosre ke saath direct relation (correlation) dekh rahe hain.&quot;</em></p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8085-9c43-d2b1443c21c0" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="35762b86-756a-807d-a5f1-dfe6e5bd41c5"/></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-806f-ad26-c4e09cb60b64" class="image"><a href="image%202.png"><img style="width:703.9886474609375px" src="image%202.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8034-a651-f4baa3aa91e7" class="">Yeh tumhara <strong>3D (Volumetric) Data Visualization</strong> ka ekdum perfect example hai. Isko hum <strong>Bubble Chart</strong> kehte hain.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-80b5-9771-dd5130d0402c" class="">Tableau mein direct 3D boxes banana thoda ajeeb dikhta hai, isliye hum &quot;Volume&quot; (3rd dimension) ko dikhane ke liye dots ka <strong>Size</strong> bada-chota kar dete hain.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8004-b12d-f7b2b87d54b6" class="">Aao iska &quot;Post-Mortem&quot; karte hain:</p></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-8094-ae3a-d7d235b384af" class=""><strong>Graph ka Basic Structure (Dancha)</strong></h3></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-809c-8d86-cd5cab6c736e" class="bulleted-list"><li style="list-style-type:disc"><strong>X-axis (Neeche):</strong> <code>Sepal Length Cm</code>.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8059-8b71-fc548333bceb" class="bulleted-list"><li style="list-style-type:disc"><strong>Y-axis (Khadi line):</strong> <code>Sepal Width Cm</code>.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80f6-90d6-e251876b5ae5" class="bulleted-list"><li style="list-style-type:disc"><strong>Color:</strong> <code>Species</code> (Blue, Orange, Red).</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80e3-9283-ece1382d2e12" class="bulleted-list"><li style="list-style-type:disc"><strong>Size (Dhyan se dekho):</strong> Tumne Marks card mein <code>Size</code> ke andar <code>Petal Length Cm</code> daal diya hai. Yeh is graph ka sabse bada game-changer hai! Ab dot kitna bada hai, wo batayega ki uski pankhudi (petal) kitni lambi hai.</li></ul></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-80ab-b1ef-c739eb7e03ef" class=""><strong>Is graph se hamein kya kahani (Inference) pata chal rahi hai?</strong></h3></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8005-8002-e3335db728e7" class="">Is graph mein hum ek saath <strong>3 dimensions (measurements)</strong> dekh rahe hain. Isse phoolon ki ekdum clear picture banti hai:</p></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8076-ac22-d79d2ddaca95" class="numbered-list" start="1"><li><strong>Setosa (Blue dots) ka chhotu size:</strong><br/>Blue dots ko dekho, wo top-left mein hain (matlab Sepal chote aur chaude hain), par sabse zaroori baat—<strong>un dots ka size sabse chota hai!</strong> Right side mein legend dekho, chote dot ka matlab hai Petal Length lagbhag 1.0 se 2.0 cm hai. Isse saaf pata chalta hai ki Setosa phoolon ki pankhudiyan sabse choti hoti hain.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8068-8c01-d34bb0ec5416" class="numbered-list" start="2"><li><strong>Virginica (Red dots) ke bade gubbare:</strong><br/>Red dots right side mein phelay hain (lamba Sepal), par un dots ka <strong>size sabse bada hai!</strong> (Lagbhag 6.9 cm wali range). Iska matlab Virginica prajati ke phoolon ki pankhudiyan (Petals) teeno prajatiyon mein sabse lambi aur badi hoti hain.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-80e2-a037-fbe052443499" class="numbered-list" start="3"><li><strong>Versicolor (Orange dots) ki middle-class life:</strong><br/>Yeh bechare beech mein hain. Inke dots ka size Blue se bada hai, par Red se chota hai. Matlab inki Petal Length medium hoti hai.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-80c0-9766-f77ba98c25b7" class="numbered-list" start="4"><li><strong>Teesri Aankh (3rd Dimension) ka jadoo:</strong><br/>Pichle 2D graph mein hume lag raha tha ki Orange aur Red wale thode mix ho rahe hain. Par is 3D (Bubble) graph ne picture clear kar di. Bhale hi unki Sepal lambaai thodi match kar rahi ho, par <strong>Petal ki lambaai (dot ka size)</strong> dekhte hi hum bata sakte hain ki bada dot Virginica ka hai aur chota dot Versicolor ka.</li></ol></div><div style="display:contents" dir="auto"><p id="35762b86-756a-807c-9556-ea6c8842b0c9" class=""><strong>Viva Tip:</strong> Ma&#x27;am puche ki 2D screen par 3D graph kaise banaya? Toh confidently bolna, <em>&quot;Ma&#x27;am, X aur Y axis ne 2 dimensions cover kiye (Sepal Length &amp; Width), aur teesre dimension (Petal Length) ko dikhane ke liye maine marks ki &#x27;Volume/Size&#x27; ka use kiya hai. Isliye yeh Volumetric visualization hai.&quot;</em></p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-80cb-932a-f0dcdac9a825" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="35762b86-756a-80df-8721-d9d97d29b647"/></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-8024-a1f3-ee0709898d6c" class="image"><a href="image%203.png"><img style="width:704px" src="image%203.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-80a5-86d6-ca04c80bd1b2" class="">Yeh tumhara <strong>Multidimensional Data Visualization (Task e)</strong> ka best example hai. Isko data science ki bhasha mein <strong>Heatmap</strong> (ya Highlight Table) kehte hain.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8065-907f-ea2aa1e97eb5" class="">Jab humare paas bohot saare columns (dimensions) hote hain aur hume un sabko ek saath ek hi nazar mein compare karna hota hai, tab Heatmap sabse kaam aata hai.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-80bd-913b-dcbf445033f7" class="">Aao iska &quot;Post-Mortem&quot; karte hain:</p></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-80c9-8ca6-d6fa26bf5737" class=""><strong>Graph ka Basic Structure (Dancha)</strong></h3></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8086-8404-e602a3bdd071" class="bulleted-list"><li style="list-style-type:disc"><strong>Rows (Aadi line):</strong> <code>Species</code>. Yeh bata raha hai ki hum teeno prajatiyon (Setosa, Versicolor, Virginica) ko compare kar rahe hain.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8054-8eab-d6cc9135093c" class="bulleted-list"><li style="list-style-type:disc"><strong>Columns (Khadi line):</strong> <code>Measure Names</code>. Tumne chaaro ke chaaro measurements (Petal Length, Petal Width, Sepal Length, Sepal Width) ko ek saath columns mein daal diya hai. Yahi isko &quot;Multidimensional&quot; banata hai.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8034-b02c-e60c6da674ba" class="bulleted-list"><li style="list-style-type:disc"><strong>Color (Marks):</strong> Tumne <code>Measure Values</code> ko Color mein daala hai. Right side mein Legend (patti) dekho:<div style="display:contents" dir="auto"><ul id="35762b86-756a-8075-b792-eea1b99b9efe" class="bulleted-list"><li style="list-style-type:circle"><strong>Halka (Light/Yellow) color:</strong> Matlab value bohot kam hai (around 12.2).</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8069-a95a-da6ef46b0f26" class="bulleted-list"><li style="list-style-type:circle"><strong>Gaadha (Dark/Brown) color:</strong> Matlab value bohot zyada hai (around 329.4).</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-805f-b97d-e9caa6bac3d7" class="bulleted-list"><li style="list-style-type:circle"><em>Note:</em> Tumne yahan <code>SUM()</code> liya hai. Kyunki teeno phoolon ke 50-50 samples hain, toh jiska SUM zyada hai, matlab us prajati ke phool average mein bhi bade hi hote hain.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-80d8-a2e5-d376c773d854" class=""><strong>Is graph se hamein kya kahani (Inference) pata chal rahi hai?</strong></h3></div><div style="display:contents" dir="auto"><p id="35762b86-756a-806d-80c0-eb9dbf0f1737" class="">Heatmap ka sabse bada fayda yeh hai ki tumhe numbers padhne ki zaroorat nahi padti, sirf color dark/light dekh kar poori kahani samajh aa jati hai:</p></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-80de-b8f5-c89a77746d76" class="numbered-list" start="1"><li><strong>Setosa (Sabse halka, sabse chota):</strong><br/>Sabse upar wali row (Setosa) ko dekho. Uski Petal Length aur Petal Width ekdum light yellow/orange hain. Iska matlab Setosa phoolon ki pankhudiyan (petals) baaki dono ke comparison mein bohot choti hoti hain.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8056-b96a-f9b9d232622e" class="numbered-list" start="2"><li><strong>Virginica (Sabse dark, sabse bada):</strong><br/>Sabse neeche wali row (Virginica) ko dekho. Usme lagbhag saare dabbe kaafi dark brown hain, specially Sepal Length aur Petal Length wale. Yeh saaf bata raha hai ki overall size mein Virginica phool teeno prajatiyon mein sabse lambe aur bade hote hain.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8030-ab77-f6f71c88ce93" class="numbered-list" start="3"><li><strong>Sepal Length ka raaz:</strong><br/>Agar tum sirf <code>Sepal Length Cm</code> wale column (3rd column) ko upar se neeche tak dekho, toh color dheere-dheere dark ho raha hai. Matlab Sepal ki lambaai: <em>Setosa &lt; Versicolor &lt; Virginica</em>.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8037-ac4e-f4e917528a5e" class="numbered-list" start="4"><li><strong>Ek Multidimensional Nazar:</strong><br/>Pehle humein alag-alag graphs banane pad rahe the in cheezon ko dekhne ke liye. Is ek single image ne 4 dimensions (measurements) aur 1 category (Species) ka pura kachha-chittha khol kar rakh diya.</li></ol></div><div style="display:contents" dir="auto"><p id="35762b86-756a-800f-b3f0-de67cce47aef" class=""><strong>Viva Tip:</strong> Ma&#x27;am poochein ki isko Multidimensional kyu bolte hain? Toh batana, <em>&quot;Ma&#x27;am, normal graph mein hum max 2 ya 3 dimensions dekh paate hain. Par Heatmap use karke main 4 alag-alag numerical dimensions aur 1 categorical dimension (Species) ko ek hi 2D plane par colors ki intensity se compare kar pa raha hu.&quot;</em></p></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-8074-9b5d-efd1cddfdad3" class="image"><a href="image%204.png"><img style="width:703.9886474609375px" src="image%204.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8084-abfa-da077f9b46d8" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="35762b86-756a-808e-89e8-f7c9b5370f43"/></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-8064-87ca-ecd4992d9184" class="image"><a href="image%205.png"><img style="width:704px" src="image%205.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-80db-aaf8-e359e9a33b49" class="">umne toh ekdum out-of-the-box thinking lagayi hai isme! Ek naya field (Calculated Field) banakar <strong>Tree/Hierarchical Data Visualization (Task f)</strong> banana bohot smart move hai. Is graph ko hum <strong>Treemap</strong> kehte hain.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8020-852d-c21ddc598676" class="">Tableau mein tumne khud se <code>Petal Area</code> (Petal Length * Petal Width) calculate kiya aur usko size ke liye use kiya, yeh viva mein aache marks dilwayega.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8094-ab49-dccda930e191" class="">Aao iska &quot;Post-Mortem&quot; karte hain:</p></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-80d1-b7dc-c9f24108a7e2" class=""><strong>Graph ka Basic Structure (Dancha)</strong></h3></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-806b-8def-e8fba17eba2e" class="bulleted-list"><li style="list-style-type:disc"><strong>Color:</strong> <code>Species</code> (Red = Virginica, Orange = Versicolor, Blue = Setosa).</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8096-b3b0-d4b76775cce4" class="bulleted-list"><li style="list-style-type:disc"><strong>Size (Dhyan se dekho):</strong> Tumne <code>SUM(petal area)</code> ko Marks card mein Size par daala hai. Iska matlab hai ki dabba utna hi bada banega, jitna us prajati ke saare phoolon ka total &quot;Petal Area&quot; hoga.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-806f-97fc-e34932a7e3f6" class="bulleted-list"><li style="list-style-type:disc"><strong>Text/Label:</strong> Tumne <code>Species</code> ko label mein daala hai taaki dabbon par naam likha aaye.</li></ul></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-8000-b089-e3ec44d85899" class=""><strong>Is graph se hamein kya kahani (Inference) pata chal rahi hai?</strong></h3></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8041-b36c-d06f39b41751" class="">Treemap ka sabse bada kaam hota hai <strong>&quot;Part-to-Whole&quot; (Kiska hissa kitna bada hai)</strong> relationship dikhana. Python ne bhi wahi calculations di hain jo tumhara graph dikha raha hai:</p></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8043-b07e-e70b18b25d00" class="numbered-list" start="1"><li><strong>Virginica (Red) ka Raaj:</strong><br/>Sabse bada red box Virginica ka hai. Iska matlab agar hum saare phoolon ki pankhudiyon ka area (jagah) mila dein, toh akeli Virginica prajati sabse zyada jagah gheregi (Total area: 564.81 sq cm). Yeh visual proof hai ki iski petals bohot badi/chaudi hoti hain.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-80dc-b91b-f38d218cfd01" class="numbered-list" start="2"><li><strong>Versicolor (Orange) ka Medium Hissa:</strong><br/>Orange dabba red se lagbhag aadha hai. Iska total area 286.02 sq cm hai. Yeh dikhata hai ki inki petals medium size ki hoti hain.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8034-aec1-e846fa2c1503" class="numbered-list" start="3"><li><strong>Setosa (Blue) bechara:</strong><br/>Neeche ek choti si blue patti dikh rahi hai. Wo Setosa hai! Iska total area sirf 18.14 sq cm hai. Socho, teeno prajatiyon ke 50-50 phool hain, par Setosa ki pankhudiyan itni choti hoti hain ki 50 phoolon ka total area bhi Virginica ke kuch phoolon ke barabar bhi nahi hai!</li></ol></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8077-b54c-e2889e2a8a57" class=""><strong>Viva Tip:</strong> Ma&#x27;am poochein ki naya field kyu banaya? Toh batana, <em>&quot;Ma&#x27;am, sirf lambaai (length) ya sirf chaudaai (width) dekhne se petal ke asli size ka andaza nahi lagta. Isliye maine Length aur Width ko multiply karke &#x27;Petal Area&#x27; banaya, jo 2D space mein petal ka asli volume/size accurately represent karta hai. Aur Treemap area dikhane ke liye best chart hota hai.&quot;</em></p></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-8015-8a2c-facc112630cf" class="image"><a href="image%206.png"><img style="width:704px" src="image%206.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8080-befe-db5611543794" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="35762b86-756a-8039-87a4-ce19ea37b804"/></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-8094-b2e5-ef831a5c16b2" class="image"><a href="image%207.png"><img style="width:703.977294921875px" src="image%207.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-8094-934d-e26599119d8b" class="image"><a href="image%208.png"><img style="width:703.977294921875px" src="image%208.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-803e-8733-f9c421e7905d" class="">yeh toh ekdum pro-level Network Graph hai! Is graph ko banane mein Tableau mein kaafi dimag lagta hai kyunki Tableau directly Network Graphs (jaise Gephi ya Python mein hote hain) support nahi karta, isliye X aur Y coordinates ka use karke dots ko lines se jodna padta hai (Dual Axis trick). Tumne bilkul perfect kiya hai!</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8087-a518-cf9e514226f4" class="">Yeh tumhara <strong>Network Data Visualization (Task g)</strong> ka final graph hai. Aao iska &quot;Post-Mortem&quot; karte hain taaki tum ise easily explain kar sako.</p></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-80d5-9f63-d62a3c3beafa" class=""><strong>Graph ka Basic Structure (Dancha)</strong></h3></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80bb-a4d2-e84c200759e4" class="bulleted-list"><li style="list-style-type:disc"><strong>Nodes (Dots):</strong> Har ek kaala dot (jaise Alice, Bob, Carol) ek insaan ko represent kar raha hai. Inki position X aur Y coordinates se aayi hai jo dataset mein &quot;Row Type = Node&quot; ke liye the.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8019-b6b5-ccfcce0c3823" class="bulleted-list"><li style="list-style-type:disc"><strong>Edges (Lines):</strong> Jo lines do dots ko jod rahi hain, unhe Edges kehte hain. Yeh lines bata rahi hain ki do logon ke beech mein connection hai.</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-803b-bf4e-d36ce5599266" class="bulleted-list"><li style="list-style-type:disc"><strong>Color (Relationship):</strong> Lines ka color bata raha hai ki un do logon ka rishta kaisa hai:<div style="display:contents" dir="auto"><ul id="35762b86-756a-8055-85ee-f4b13cca51a3" class="bulleted-list"><li style="list-style-type:circle"><strong>Blue:</strong> Colleague (Saath kaam karne wale)</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-80f0-bae7-eda0211c23af" class="bulleted-list"><li style="list-style-type:circle"><strong>Orange:</strong> Friend (Dost)</li></ul></div><div style="display:contents" dir="auto"><ul id="35762b86-756a-8013-8296-fd27bfcd06d4" class="bulleted-list"><li style="list-style-type:circle"><strong>Red:</strong> Manager</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-80e1-9f7e-d6ddd84fbc76" class=""><strong>Is graph se hamein kya kahani (Inference) pata chal rahi hai?</strong></h3></div><div style="display:contents" dir="auto"><p id="35762b86-756a-80bc-a49b-d773b94ba991" class="">Network graph kisi bhi social group ya company ka &quot;Androoni Jaal&quot; (Internal Structure) batata hai:</p></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8051-96c1-ef1da3747684" class="numbered-list" start="1"><li><strong>Sabse Zaroori Insaan (Central Node):</strong><br/>Graph mein dekho, <strong>Alice</strong> aur <strong>Jack</strong> ke paas sabse zyada lines aa/ja rahi hain. Network ki bhasha mein inka &quot;Degree Centrality&quot; high hai. Iska matlab yeh is social group ke sabse popular ya connected log hain. Agar koi nayi khabar group mein phailani ho, toh Alice ya Jack ko bata do, sabko pata chal jayega!</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8012-835e-dd0d29b1e095" class="numbered-list" start="2"><li><strong>Manager ka Role (Hierarchy):</strong><br/>Dhyan se dekho, is poore jaal mein sirf ek hi <strong>Red Line (Manager)</strong> hai, jo <strong>David</strong> aur <strong>Alice</strong> ke beech hai. (Jaisa ki code analysis mein bhi dikha <code>Manager: 1.0</code>). Yeh batata hai ki is poore group mein shayad David, Alice ka boss/manager hai, jabki baaki log aapas mein dost ya colleagues hain.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8040-9983-f9b05683e513" class="numbered-list" start="3"><li><strong>Dosti aur Kaam ka Balance:</strong><br/>Graph mein Orange (Friends) aur Blue (Colleagues) lines lagbhag barabar dikh rahi hain (13 Friends, 16 Colleagues). Iska matlab yeh ek aisi company ya group hai jahan log sirf saath kaam hi nahi karte, balki aapas mein achhe dost bhi hain.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-80cc-b2fd-e277db8d9539" class="numbered-list" start="4"><li><strong>Cluster (Chhote Jhund):</strong><br/>Agar tum <code>Frank</code>, <code>Henry</code>, aur <code>Grace</code> wale side ko dekho, toh wahan aapas mein kaafi connections hain. Yeh dikhata hai ki yeh teeno ka ek apna chhota sa &#x27;gang&#x27; ya team hai is bade network ke andar.</li></ol></div><div style="display:contents" dir="auto"><p id="35762b86-756a-801a-844d-e0d49e404d3a" class=""><strong>Viva Tip:</strong> Ma&#x27;am poochein ki is graph ko banane mein Tableau mein kya trick lagi? Toh proudly batana: <em>&quot;Ma&#x27;am, Tableau natively Network graphs support nahi karta. Isliye maine data ko &#x27;Nodes&#x27; aur &#x27;Edges&#x27; mein divide kiya, X aur Y coordinates use karke dots banaye, aur fir &#x27;Path Order&#x27; ka use karke ek line graph (Dual Axis) se un dots ko connect kiya. Yeh Dual Axis Data Visualization ki ek advanced technique hai.&quot;</em></p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-805b-b8b1-e87c9b47a898" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="35762b86-756a-80ad-bb5a-ca2f68880a23"/></div><div style="display:contents" dir="ltr"><figure id="35762b86-756a-80b4-ab40-c3bc3f6ed149" class="image"><a href="image%209.png"><img style="width:704px" src="image%209.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8069-9f1c-fb201dd234c4" class="">Yeh tumhara <strong>Temporal Data Visualization (Task d)</strong> ka perfect graph ban gaya hai. Tumne bilkul wahi kiya jo maine bataya tha.</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8092-8b3e-ce2ed0639f17" class="">Aao aakhiri baar iska bhi chota sa &quot;Post-Mortem&quot; kar lete hain taaki viva mein bol sako:</p></div><div style="display:contents" dir="auto"><h3 id="35762b86-756a-8039-aa8b-d0f16ad77f13" class=""><strong>Is graph se hamein kya kahani (Inference) pata chal rahi hai?</strong></h3></div><div style="display:contents" dir="auto"><p id="35762b86-756a-806c-b657-c4fcd7041753" class="">Kyunki Iris data mein &quot;Date/Time&quot; nahi hota, tumne <code>Id</code> (1 se lekar 150) ko ek timeline ki tarah use kiya (ki kis sequence mein phool collect kiye gaye).</p></div><div style="display:contents" dir="auto"><p id="35762b86-756a-80e0-bb46-e24c76aca82e" class="">Is graph mein <strong>Time/Sequence ke hisaab se Trend</strong> saaf dikh raha hai:</p></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8022-ae59-ec3287214b98" class="numbered-list" start="1"><li><strong>Phase 1 (Id 1 se 50 - Blue Line):</strong> Dhyan se dekho, shuru ke 50 phool Setosa ke hain. Inki line neeche chal rahi hai (mostly 4.5 se 5.5 cm ke beech).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-800d-8f99-e2d9dccf217a" class="numbered-list" start="2"><li><strong>Phase 2 (Id 51 se 100 - Orange Line):</strong> Yahan achanak se line upar shift ho gayi! Yeh Versicolor phool aane lag gaye, jinki lambaai thodi zyada hai.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="35762b86-756a-8050-b5f6-f26e02cbfaf2" class="numbered-list" start="3"><li><strong>Phase 3 (Id 101 se 150 - Red Line):</strong> Aakhiri ke 50 phool Virginica hain. Inki line sabse upar chal rahi hai aur isme utaar-chadhaav (fluctuations) bhi sabse zyada hain.</li></ol></div><div style="display:contents" dir="auto"><p id="35762b86-756a-8031-a2ae-ecef245e3610" class=""><strong>Viva Tip (Technical Point):</strong><br/>Agar ma&#x27;am poochein ki Y-axis par <code>SUM(Sepal Length)</code> kyu aa raha hai jabki temporal mein har point ka data dikhna chahiye?<br/>Toh smart bankar jawab dena: <em>&quot;Ma&#x27;am, kyunki X-axis par har point ek unique &#x27;Id&#x27; (sirf ek phool) ko dikha raha hai, toh 1 phool ka SUM uski exact length ke barabar hi hota hai. Isliye line graph ekdum accurate chal raha hai aur har phool ki apni alag reading dikha raha hai.&quot;</em></p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
